@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 11:36:40 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/26 16:03:42 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/26 16:28:15 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	push(t_stack *to, t_stack *from)
 		return ;
 	to->arr[to->top_pos] = from->arr[from->top_pos];
 	from->arr[from->top_pos] = 0;
-	//if (to->top_pos != 0)
-	to->top_pos--;
+	if (to->top_pos != 0)
+		to->top_pos--;
 	to->current_s++;
 	if (from->top_pos != (int)from->max_s - 1)
 		from->top_pos++;

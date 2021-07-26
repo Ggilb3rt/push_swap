@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:09 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/26 15:56:34 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/26 16:35:35 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,20 @@ void	make_ex(t_stack *a, t_stack *b)
 	print_stacks(a, b);
 }
 
+void only_push(t_stack *a, t_stack *b)
+{
+	print_stacks(a, b);
+	push(b, a);
+	push(b, a);
+	push(b, a);
+	push(b, a);
+	push(b, a);
+	print_stacks(a, b);
+	push(a, b);
+
+
+}
+
 int	main(int ac, char **av)
 {
 	t_stack		a;
@@ -113,7 +127,8 @@ int	main(int ac, char **av)
 		return (EXIT_SUCCESS);
 	find_biggest(&a);
 	find_smallest(&a);
-	make_ex(&a, &b);
+	//make_ex(&a, &b);
+	//only_push(&a, &b);
 	ft_putstr_fd("\nEND\n", 1);
 	print_stacks(&a, &b);
 	free(a.arr);
