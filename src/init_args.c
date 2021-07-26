@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 10:23:27 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/26 12:30:32 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/26 13:51:27 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_bool	all_digits(char *av)
 	while (av[k])
 	{
 		if (!ft_isdigit(av[k]))
-			if (!(k == 0 && av[k] == '-'))
+			if (!(k == 0 && (av[k] == '-' || av[k] == '+')))
 				return (false);
 		k++;
 	}

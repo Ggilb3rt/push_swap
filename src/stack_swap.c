@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 10:56:59 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/26 12:16:09 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/26 14:39:45 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swap(t_stack *x, t_bool single)
 	if (x->current_s <= 1)
 		return ;
 	tmp = x->arr[x->top_pos + 1];
-	x->arr[1] = x->arr[x->top_pos];
+	x->arr[x->top_pos + 1] = x->arr[x->top_pos];
 	x->arr[x->top_pos] = tmp;
 	if (single)
 	{
