@@ -28,7 +28,7 @@ $O%.o: $S%.c | $O
 	@$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	make bonus -C lib/libft/
+	make -C lib/libft/
 	@printf "Compilation ...\n"
 	@$(CC) $^ -L./lib/libft -lft -o $@
 	@printf "Have fun :-)\n"

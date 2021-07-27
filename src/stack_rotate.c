@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:58:56 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/26 15:05:13 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/27 13:31:16 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	double_rotate(t_stack *a, t_stack *b)
 	rotate(b, false);
 	ft_putstr_fd("rr\n", 1);
 }
-
 
 void	reverse_rotate(t_stack *x, t_bool single)
 {

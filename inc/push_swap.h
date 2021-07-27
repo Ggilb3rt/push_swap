@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:21 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/26 15:48:09 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/27 10:15:24 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	print_stacks(t_stack *a, t_stack *b);
 void	push_a(t_stack *a, t_stack *b);
 
 t_bool	init_stack(t_stack *x, int max_size, char stack_name);
-t_bool	init_arg(int max_l, char **av, int *a, size_t *current_s, int *top_pos);
+t_bool	init_arg(t_stack *a, char **av);
 t_bool	is_short(t_stack *x);
 void	find_biggest(t_stack *x);
 void	find_smallest(t_stack *x);

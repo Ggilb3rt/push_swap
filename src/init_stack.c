@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 10:19:55 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/26 14:13:05 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/27 13:35:11 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_bool	init_stack(t_stack *x, int max_size, char stack_name)
 	x->biggest = 0;
 	x->smallest = 0;
 	x->current_s = 0;
-	x->top_pos = x->max_s - 1;
+	x->top_pos = x->max_s;
 	x->stack_name = stack_name;
 	return (true);
 }

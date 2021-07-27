@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 10:23:27 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/26 13:51:27 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/27 13:28:24 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ t_bool	all_digits(char *av)
 	return (true);
 }
 
+t_bool	arg_overflow(int num, char *av)
+{
+	char	*comp;
+
+	comp = ft_itoa(num);
+	if (strcmp(comp, av))
+		return (true);
+	return (false);
+}
+
 t_bool	put_to_a(int max_l, char **av, int *a)
 {
 	int	i;
@@ -37,6 +47,8 @@ t_bool	put_to_a(int max_l, char **av, int *a)
 		if (!all_digits(av[i]))
 			return (false);
 		a[i - 1] = ft_atoi(av[i]);
+		if (arg_overflow(a[i - 1], av[i]))
+			return (false);
 		i++;
 	}
 	return (true);
@@ -62,19 +74,19 @@ t_bool	find_double(int max_l, int *a)
 	return (false);
 }
 
-t_bool	init_arg(int max_l, char **av, int *a, size_t *current_s, int *top_pos)
+t_bool	init_arg(t_stack *a, char **av)
 {
-	if (!put_to_a(max_l, av, a))
+	if (!put_to_a(a->max_s, av, a->arr))
 	{
 		write(2, "Error\n", 6);
 		return (false);
 	}
-	if (find_double(max_l, a))
+	if (find_double(a->max_s, a->arr))
 	{
 		write(2, "Error\n", 6);
 		return (false);
 	}
-	*current_s = (size_t)max_l;
-	*top_pos = 0;
+	a->current_s = (size_t)a->max_s;
+	a->top_pos = 0;
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:09 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/26 16:35:35 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/27 13:45:56 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ void	print_stacks(t_stack *a, t_stack *b)
 
     check av :
         - que des int
-TODO    - pas de depassement d'int
+		- pas de depassement d'int
         - pas de doublon
     ERROR handler == "Error\n"
+	============ OK ============
 
     select method based on ac
     ?   - ac <= 5 ==> short small stack
@@ -56,10 +57,10 @@ void	do_some(t_stack *a, t_stack *b)
 
 	i = 0;
 	swap(a, true);
-	//print_stacks(a, b);
+	print_stacks(a, b);
 	while (i++ < x_time)
 		rotate(a, true);
-	//print_stacks(a, b);
+	print_stacks(a, b);
 	i = 0;
 	while (i++ < x_time)
 		reverse_rotate(a, true);
@@ -67,6 +68,7 @@ void	do_some(t_stack *a, t_stack *b)
 	i = 0;
 	while (i++ < x_time)
 		push(b, a);
+	print_stacks(a, b);
 	i = 0;
 	while (i++ < x_time)
 		rotate(b, true);
@@ -77,8 +79,8 @@ void	do_some(t_stack *a, t_stack *b)
 	i = 0;
 	while (i++ < x_time / 2)
 		push(a, b);
-	double_rotate(a, b);
 	print_stacks(a, b);
+	double_rotate(a, b);
 }
 
 void	make_ex(t_stack *a, t_stack *b)
@@ -97,20 +99,6 @@ void	make_ex(t_stack *a, t_stack *b)
 	print_stacks(a, b);
 }
 
-void only_push(t_stack *a, t_stack *b)
-{
-	print_stacks(a, b);
-	push(b, a);
-	push(b, a);
-	push(b, a);
-	push(b, a);
-	push(b, a);
-	print_stacks(a, b);
-	push(a, b);
-
-
-}
-
 int	main(int ac, char **av)
 {
 	t_stack		a;
@@ -121,14 +109,14 @@ int	main(int ac, char **av)
 	if (!init_stack(&a, ac, 'a') || !init_stack(&b, ac, 'b'))
 		return (EXIT_FAILURE);
 	//! return after here need to free a and b
-	if (!init_arg(a.max_s, av, a.arr, &a.current_s, &a.top_pos))
+	if (!init_arg(&a, av))
 		return (EXIT_FAILURE);
 	if (is_short(&a))
 		return (EXIT_SUCCESS);
 	find_biggest(&a);
 	find_smallest(&a);
 	//make_ex(&a, &b);
-	//only_push(&a, &b);
+	do_some(&a, &b);
 	ft_putstr_fd("\nEND\n", 1);
 	print_stacks(&a, &b);
 	free(a.arr);
