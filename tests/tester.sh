@@ -44,11 +44,11 @@ printf "\n${ORANGE}only one | 1 |${NC}\n"
 printf "\n${ORANGE}normal | 1 7 +81 -4 |${NC}\n"
 ./push_swap 1 7 81 -4
 
-printf "\n${ORANGE}with \"\" | \"2 1 3 6 5 8\" |${NC}\n"
-./push_swap "2 1 3 6 5 8"
+printf "\n${ORANGE}0 inside | 1 2 0 3 |${NC}\n"
+./push_swap 1 2 0 3
 
 printf "\n${ORANGE}from subject | 2 1 3 6 5 8 |${NC}\n"
 ./push_swap 2 1 3 6 5 8
 
-printf "\n${ORANGE}0 inside | 1 2 0 3 |${NC}\n"
-./push_swap 1 2 0 3
+printf "\n${ORANGE}with \"\" | \"2 1 3 6 5 8\" |${NC}\n"
+./push_swap "2 1 3 6 5 8"

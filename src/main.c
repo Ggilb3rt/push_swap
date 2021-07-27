@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:09 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/27 13:45:56 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/27 14:30:03 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,6 @@ void	print_stacks(t_stack *a, t_stack *b)
 }
 
 /*
-    ac = 1 ==> return(0)
-
-    check av :
-        - que des int
-		- pas de depassement d'int
-        - pas de doublon
-    ERROR handler == "Error\n"
-	============ OK ============
-
     select method based on ac
     ?   - ac <= 5 ==> short small stack
 	?	- ac > 5 ==> short big stack
@@ -99,6 +90,15 @@ void	make_ex(t_stack *a, t_stack *b)
 	print_stacks(a, b);
 }
 
+void	my_exit(t_stack *a, t_stack *b, int status)
+{
+	if (a->arr)
+		free(a->arr);
+	if (b->arr)
+		free(b->arr);
+	exit(status);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack		a;
@@ -108,18 +108,14 @@ int	main(int ac, char **av)
 		return (EXIT_SUCCESS);
 	if (!init_stack(&a, ac, 'a') || !init_stack(&b, ac, 'b'))
 		return (EXIT_FAILURE);
-	//! return after here need to free a and b
 	if (!init_arg(&a, av))
-		return (EXIT_FAILURE);
+		my_exit(&a, &b, EXIT_FAILURE);
 	if (is_short(&a))
-		return (EXIT_SUCCESS);
+		my_exit(&a, &b, EXIT_SUCCESS);
 	find_biggest(&a);
 	find_smallest(&a);
-	//make_ex(&a, &b);
 	do_some(&a, &b);
 	ft_putstr_fd("\nEND\n", 1);
 	print_stacks(&a, &b);
-	free(a.arr);
-	free(b.arr);
-	return (EXIT_SUCCESS);
+	my_exit(&a, &b, EXIT_FAILURE);
 }

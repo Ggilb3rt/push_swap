@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 10:19:55 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/27 13:35:11 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/27 14:27:56 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_bool	is_short(t_stack *x)
 	if (x->is_sort)
 		return (true);
 	i = 0;
-	while (i <= x->max_s - 1)
+	while (i <= x->max_s - 1 && x->max_s != 1)
 	{
 		if (x->arr[i] < x->arr[i + 1])
 			i++;

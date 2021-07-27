@@ -7,7 +7,8 @@ include sources.mk
 OBJ = $(SRC:$S%.c=$O%.o)
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+#REMEMBER TO REMOVE -g
+CFLAGS = -Wall -Werror -Wextra -g
 INCFLAGS = -I$I
 
 RM = rm -f
