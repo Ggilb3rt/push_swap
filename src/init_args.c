@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 10:23:27 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/27 14:15:00 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/27 15:55:51 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ t_bool	find_double(int max_l, int *a)
 	return (false);
 }
 
+/*
+* To handle "1 4 5 2"
+* use foreach(av, (this) => ft_split(av[this], ' ')) // will works with "7" for exemple
+* don't forget to free
+*/
 t_bool	init_arg(t_stack *a, char **av)
 {
 	if (!put_to_a(a->max_s, av, a->arr))

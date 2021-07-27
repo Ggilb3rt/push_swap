@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:09 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/27 14:30:03 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/27 16:18:40 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,6 @@ void	print_stacks(t_stack *a, t_stack *b)
 	print_stack(a, a->max_s);
 	print_stack(b, b->max_s);
 }
-
-/*
-    select method based on ac
-    ?   - ac <= 5 ==> short small stack
-	?	- ac > 5 ==> short big stack
-
-	use good method and print each actions
-*/
 
 void	do_some(t_stack *a, t_stack *b)
 {
@@ -88,15 +80,6 @@ void	make_ex(t_stack *a, t_stack *b)
 	print_stacks(a, b);
 	push(a, b);push(a, b);push(a, b);
 	print_stacks(a, b);
-}
-
-void	my_exit(t_stack *a, t_stack *b, int status)
-{
-	if (a->arr)
-		free(a->arr);
-	if (b->arr)
-		free(b->arr);
-	exit(status);
 }
 
 int	main(int ac, char **av)
