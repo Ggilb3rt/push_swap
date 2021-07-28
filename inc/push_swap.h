@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:21 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/27 15:29:30 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/28 14:07:42 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_stack
 	int				*arr;
 	int				biggest;
 	int				smallest;
+	size_t			smallest_pos;
 	int				top_pos;
 	size_t			max_s;
 	size_t			current_s;
@@ -42,6 +43,7 @@ t_bool	init_arg(t_stack *a, char **av);
 t_bool	is_short(t_stack *x);
 void	find_biggest(t_stack *x);
 void	find_smallest(t_stack *x);
+void	find_smallest_pos(t_stack *x);
 
 void	swap(t_stack *x, t_bool single);
 void	double_swap(t_stack *a, t_stack *b);
@@ -50,6 +52,9 @@ void	rotate(t_stack *x, t_bool single);
 void	double_rotate(t_stack *a, t_stack *b);
 void	reverse_rotate(t_stack *x, t_bool single);
 void	double_reverse_rotate(t_stack *a, t_stack *b);
+
+void	very_short_sort(t_stack *a);
+void	short_sort(t_stack *a, t_stack *b);
 
 void	my_exit(t_stack *a, t_stack *b, int status);
 

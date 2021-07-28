@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:09 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/27 16:18:40 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/28 14:32:49 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,15 @@ int	main(int ac, char **av)
 		my_exit(&a, &b, EXIT_SUCCESS);
 	find_biggest(&a);
 	find_smallest(&a);
-	do_some(&a, &b);
-	ft_putstr_fd("\nEND\n", 1);
-	print_stacks(&a, &b);
+	find_smallest_pos(&a);
+	//do_some(&a, &b);
+	//printf("AC = %d | current %zu | max %zu\n", ac, a.current_s, a.max_s);
+	//printf("SMALLEST[%zu] = %d\n", a.smallest_pos, a.smallest);
+	if (ac <= 4)
+		very_short_sort(&a);
+	else
+		short_sort(&a, &b);
+	//ft_putstr_fd("\nEND\n", 1);
+	//print_stacks(&a, &b);
 	my_exit(&a, &b, EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 10:19:55 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/27 14:45:59 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/28 14:48:42 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_bool	init_stack(t_stack *x, int max_size, char stack_name)
 	ft_memset(x->arr, 0, x->max_s * sizeof(int));
 	x->biggest = 0;
 	x->smallest = 0;
+	x->smallest_pos = 0;
 	x->current_s = 0;
 	x->top_pos = x->max_s;
 	x->stack_name = stack_name;
@@ -67,15 +68,33 @@ void	find_biggest(t_stack *x)
 	}
 }
 
+// Les find smallest ne prennent pas en compte la current_s ni le top de la stack
 void	find_smallest(t_stack *x)
 {
 	size_t	i;
 
 	i = 0;
+	x->smallest = x->arr[x->top_pos];
 	while (i <= x->max_s - 1)
 	{
 		if (x->smallest > x->arr[i])
 			x->smallest = x->arr[i];
 		i++;
 	}
+}
+
+void	find_smallest_pos(t_stack *x)
+{
+	size_t	i;
+
+	x->smallest_pos = x->top_pos;
+	i = 0;
+	printf("\nstart small[%zu] = %d\n", x->smallest_pos, x->arr[x->smallest_pos]);
+	while (i <= x->current_s - 1)
+	{
+		if (x->arr[x->smallest_pos] > x->arr[i])
+			x->smallest_pos = i;
+		i++;
+	}
+	printf("end small[%zu] = %d\n", x->smallest_pos, x->arr[x->smallest_pos]);
 }

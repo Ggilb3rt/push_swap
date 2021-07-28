@@ -1,19 +1,61 @@
 #!/bin/bash
 
 RED='\033[0;31m'
+GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
 LGRAY='\033[;37m'
 LBLUE='\033[1;34m'
 PURP='\033[0;35m'
 NC='\033[0m'
 
-printf "Test is in ${LBLUE}orange${NC} when it should works\n"
+printf "Test is in ${ORANGE}orange${NC} when it should works\n"
 printf "Test is in ${LBLUE}blue${NC} when I don't know what is expected\n"
 printf "Test is in ${PURP}purple${NC} when Error is expected\n\n"
 
 printf "\n${ORANGE}empty${NC}\n"
 ./push_swap
 
+## ERRORS TESTS  
+declare -a ERROR_NUM=(
+	'1 2 1 -43'
+	'1 2 2 3 2'
+	'1 7 98 nn'
+	'-4-8-7'
+	'-7Lb98'
+	'1 2 2147483649'
+	'1 2 -2147483649'
+)
+for i in "${ERROR_NUM[@]}"; do
+	printf "\n${PURP}./push_swap $i${NC}\n"
+	./push_swap $i
+	#./push_swap $i | ./checker_Mac $i
+	#printf "CHECKER : `./push_swap $i | ./checker_Mac $i`\n"
+done
+
+## WORKING TESTS
+declare -a WORKING_NUM=(
+	'-14 1 2 3 4 5 6 7 41 87'
+	'1'
+	'455 -7'
+	'47 -8 5'
+	'0 100 85'
+	'1 7 +81 -4'
+	'1 2 0 3'
+	'2 1 3 6 5 8'
+	'\"2 1 3 6 5 8\"'
+)
+for i in "${WORKING_NUM[@]}"; do
+	printf "\n${ORANGE}./push_swap $i${NC}\n"
+	./push_swap $i
+	RET=`./push_swap $i | ./checker_Mac $i`
+	if [ $RET = "OK" ]; then
+		printf "CHECKER : $GREEN $RET $NC\n"
+	else
+		printf "CHECKER : $RED $RET $NC\n"
+	fi
+done
+
+: '
 printf "\n${PURP}double | 1 2 1 -43 |${NC}\n"
 ./push_swap 1 2 1 -43
 
@@ -40,6 +82,16 @@ printf "\n${ORANGE}already short | -14 1 2 3 4 5 6 7 41 87 |${NC}\n"
 
 printf "\n${ORANGE}only one | 1 |${NC}\n"
 ./push_swap 1
+./push_swap 1 | ./checker_Mac 1
+
+LIST="455 -7"
+printf "\n${ORANGE}very very short | $LIST |${NC}\n"
+./push_swap $LIST
+RET=`./push_swap $LIST | ./checker_Mac $LIST`
+printf "CHECKER MAC : $RET\n"
+
+printf "\n${ORANGE}very short | 455 1 -7 |${NC}\n"
+./push_swap 455 1 -7
 
 printf "\n${ORANGE}normal | 1 7 +81 -4 |${NC}\n"
 ./push_swap 1 7 81 -4
@@ -50,5 +102,13 @@ printf "\n${ORANGE}0 inside | 1 2 0 3 |${NC}\n"
 printf "\n${ORANGE}from subject | 2 1 3 6 5 8 |${NC}\n"
 ./push_swap 2 1 3 6 5 8
 
-printf "\n${ORANGE}with \"\" | \"2 1 3 6 5 8\" |${NC}\n"
+printf "\n${LBLUE}with \"\" | \"2 1 3 6 5 8\" |${NC}\n"
 ./push_swap "2 1 3 6 5 8"
+'
+
+
+#declare -A arr=([pou]="'pouet'" [cho]="cacao")
+#declare -p arr
+#for key in "${!arr[@]}"; do
+#	echo "$key->${arr[$key]}"
+#done

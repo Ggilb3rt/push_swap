@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 10:23:27 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/27 15:55:51 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/28 13:48:19 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_bool	init_arg(t_stack *a, char **av)
 		write(2, "Error\n", 6);
 		return (false);
 	}
-	a->current_s = (size_t)a->max_s;
+	a->current_s = a->max_s;
 	a->top_pos = 0;
 	return (true);
 }

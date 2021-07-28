@@ -33,7 +33,7 @@ $(NAME): $(OBJ)
 	@printf "Compilation ...\n"
 	@$(CC) $^ -L./lib/libft -lft -o $@
 	@printf "Have fun :-)\n"
-	./tests/tester.sh
+	#./tests/tester.sh
 
 # CLEANERS
 clean:
