@@ -48,8 +48,7 @@ declare -a WORKING_NUM=(
 	'1 7 +81 -4'
 	'1 2 0 3'
 	'2 1 3 6 5 8'
-	'9 8 1 6 5'
-	'9 8 1 2 3'
+	'5 9 1 8 6'
 	'9 8 1 6 5 4'
 	'9 8 7 6 5 4'
 )
@@ -65,13 +64,13 @@ for i in "${WORKING_NUM[@]}"; do
 done
 
 ## RANDOM NUMBERS TESTS
-printf "\n\n${ORANGE}Now some tests with random numbers from /dev/urandom${NC}\n"
+printf "\n\n${ORANGE}------------------------------------------------------\n"
+printf "Now some tests with random numbers from /dev/urandom${NC}\n"
 
-NUM="`od -An -N4 -i < /dev/urandom`"
-for i in `seq 1 2`; do
+for i in `seq 0 2`; do
 	NUM+="`od -An -N4 -i < /dev/urandom`"
 done
-printf "3 random num ($NUM)\n"
+printf "\n${ORANGE}3 random num $NC\n"
 ./push_swap $NUM | wc -l
 RET=`./push_swap $NUM | ./checker_Mac $NUM`
 if [ $RET = "OK" ]; then
@@ -80,11 +79,10 @@ else
 	printf "$RED CHECKER : $RET $NC\n"
 fi
 
-NUM5="`od -An -N4 -i < /dev/urandom`"
-for i in `seq 1 4`; do
+for i in `seq 1 5`; do
 	NUM5+="`od -An -N4 -i < /dev/urandom`"
 done
-printf "5 random num ($NUM5)\n"
+printf "\n${ORANGE}5 random num $NC\n"
 ./push_swap $NUM5 | wc -l
 RET=`./push_swap $NUM5 | ./checker_Mac $NUM5`
 if [ $RET = "OK" ]; then
@@ -93,6 +91,17 @@ else
 	printf "$RED CHECKER : $RET $NC\n"
 fi
 
+for i in `seq 1 6`; do
+	NUM6+="`od -An -N4 -i < /dev/urandom`"
+done
+printf "\n${ORANGE}6 random num $NC\n"
+./push_swap $NUM6 | wc -l
+RET=`./push_swap $NUM6 | ./checker_Mac $NUM6`
+if [ $RET = "OK" ]; then
+	printf "$GREEN CHECKER : $RET $NC\n"
+else
+	printf "$RED CHECKER : $RET $NC\n"
+fi
 
 : '
 printf "\n${PURP}double | 1 2 1 -43 |${NC}\n"

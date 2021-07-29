@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 09:48:12 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/29 10:14:32 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/29 13:37:36 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	smallests_to_b(t_stack *a, t_stack *b)
 		}
 		while (a->smallest_pos != (size_t)a->top_pos)
 		{
-			if (a->smallest_pos + 1 > a->current_s / 2)
+			if (a->smallest_pos > a->current_s / 2)
 				reverse_rotate(a, true);
-			else if (a->smallest_pos + 1 <= a->current_s / 2)
+			else if (a->smallest_pos <= a->current_s / 2)
 				rotate(a, true);
 			find_smallest_pos(a);
 		}
