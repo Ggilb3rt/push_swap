@@ -32,6 +32,12 @@ for i in "${ERROR_NUM[@]}"; do
 	#printf "CHECKER : `./push_swap $i | ./checker_Mac $i`\n"
 done
 
+declare -a PRRRT_NUM=('\"2 1 3 6 5 8\"')
+for j in "${PRRRT_NUM[@]}"; do
+	printf "\n${LBLUE}./push_swap $j${NC}\n"
+	./push_swap $j
+done
+
 ## WORKING TESTS
 declare -a WORKING_NUM=(
 	'-14 1 2 3 4 5 6 7 41 87'
@@ -42,16 +48,19 @@ declare -a WORKING_NUM=(
 	'1 7 +81 -4'
 	'1 2 0 3'
 	'2 1 3 6 5 8'
-	'\"2 1 3 6 5 8\"'
+	'9 8 1 6 5'
+	'9 8 1 2 3'
+	'9 8 1 6 5 4'
+	'9 8 7 6 5 4'
 )
 for i in "${WORKING_NUM[@]}"; do
 	printf "\n${ORANGE}./push_swap $i${NC}\n"
-	./push_swap $i
+	./push_swap $i | wc -l
 	RET=`./push_swap $i | ./checker_Mac $i`
 	if [ $RET = "OK" ]; then
-		printf "CHECKER : $GREEN $RET $NC\n"
+		printf "$GREEN CHECKER : $RET $NC\n"
 	else
-		printf "CHECKER : $RED $RET $NC\n"
+		printf "$RED CHECKER : $RET $NC\n"
 	fi
 done
 

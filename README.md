@@ -1,5 +1,5 @@
 # Project push_swap
-
+Note de mes reflexions autour du projet, ce readme n'a pas vraiment pour but de vous aider mais plutôt de m'aider.
 
 ## Think about it
 
@@ -9,8 +9,8 @@ check av :
 - [x] que des int
 - [x] pas de depassement d'int
 - [x] pas de doublon
-- [ ] '+' peu être explicite ou implicite
-* Needed ? (apparament oui cf p9 sujet)
+- [x] '+' peu être explicite ou implicite (probleme arg_overflow() resolut)
+* Needed ? (apparament oui cf p9 sujet; en fait non, bash parse tout seul, pas zsh)
 - [ ] `./push_swap "1 2 4 0 9 7" doit fonctionner` (1 *av à split)
 
 ERROR handler == "Error\n"
@@ -98,3 +98,8 @@ Exemple du pdf : a[2 1 3 6 5 8] b[]
 Pour 1. selectionne facon la plus rapide de remonter smallest
 	si en position 2 (ou a[1]) => swap
 	si position > (current_s / 2) ? reverse_rotate : rotate
+
+find smallest
+a[8 4 2 5] ==> depart i = 0 (si a[i+1] < a[i] ? i = i+1 : i)*3 ; i = 2 ==> ra ra pb
+a[0 5 8 4] ==> depart i = 1 (si a[i+1] < a[i] ? i = i+1 : i)*2 ; i = 2 ==> rra pb
+a[0 0 5 8] ==> 	"" 						""			 		*1 ; i = 0 ==> pb pb

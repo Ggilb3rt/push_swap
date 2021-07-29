@@ -48,3 +48,5 @@ fcleanall: fclean fcleanlibft
 reall: fcleanall all
 
 
+test :
+	./tests/tester.sh

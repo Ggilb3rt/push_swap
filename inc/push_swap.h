@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:21 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/28 14:07:42 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/29 10:27:40 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ typedef struct s_stack
 	char			stack_name;
 }				t_stack;
 
-void	print_stack(t_stack *a, int l);
+void	print_stack(t_stack *a);
 void	print_stacks(t_stack *a, t_stack *b);
-void	push_a(t_stack *a, t_stack *b);
+void	print_stack_state(t_stack *a);
+
+//void	push_a(t_stack *a, t_stack *b);
 
 t_bool	init_stack(t_stack *x, int max_size, char stack_name);
 t_bool	init_arg(t_stack *a, char **av);
