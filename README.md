@@ -103,3 +103,6 @@ find smallest
 a[8 4 2 5] ==> depart i = 0 (si a[i+1] < a[i] ? i = i+1 : i)*3 ; i = 2 ==> ra ra pb
 a[0 5 8 4] ==> depart i = 1 (si a[i+1] < a[i] ? i = i+1 : i)*2 ; i = 2 ==> rra pb
 a[0 0 5 8] ==> 	"" 						""			 		*1 ; i = 0 ==> pb pb
+
+
+### Something big is comming

@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:09 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/29 11:23:46 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/29 11:59:30 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,10 @@ int	main(int ac, char **av)
 	//print_stack_state(&a);
 	if (ac <= 4)
 		very_short_sort(&a);
-	else
+	else if (ac <= 6)
 		short_sort(&a, &b);
+	//else
+	//	radix_sort(&a, &b);
 	//print_stack_state(&a);
 	my_exit(&a, &b, EXIT_FAILURE);
 }

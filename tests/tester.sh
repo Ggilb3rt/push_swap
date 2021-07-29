@@ -64,6 +64,36 @@ for i in "${WORKING_NUM[@]}"; do
 	fi
 done
 
+## RANDOM NUMBERS TESTS
+printf "\n\n${ORANGE}Now some tests with random numbers from /dev/urandom${NC}\n"
+
+NUM="`od -An -N4 -i < /dev/urandom`"
+for i in `seq 1 2`; do
+	NUM+="`od -An -N4 -i < /dev/urandom`"
+done
+printf "3 random num ($NUM)\n"
+./push_swap $NUM | wc -l
+RET=`./push_swap $NUM | ./checker_Mac $NUM`
+if [ $RET = "OK" ]; then
+	printf "$GREEN CHECKER : $RET $NC\n"
+else
+	printf "$RED CHECKER : $RET $NC\n"
+fi
+
+NUM5="`od -An -N4 -i < /dev/urandom`"
+for i in `seq 1 4`; do
+	NUM5+="`od -An -N4 -i < /dev/urandom`"
+done
+printf "5 random num ($NUM5)\n"
+./push_swap $NUM5 | wc -l
+RET=`./push_swap $NUM5 | ./checker_Mac $NUM5`
+if [ $RET = "OK" ]; then
+	printf "$GREEN CHECKER : $RET $NC\n"
+else
+	printf "$RED CHECKER : $RET $NC\n"
+fi
+
+
 : '
 printf "\n${PURP}double | 1 2 1 -43 |${NC}\n"
 ./push_swap 1 2 1 -43
