@@ -19,7 +19,7 @@ ERROR handler == "Error\n"
 * ac <= 3 ==> max 3
 * 3 < ac <= 5 ==> max 12
 * 5 < ac >= 100 ==> 700 900 1100 1300 1500 (5 to 1 point)
-* 100 < ac >= 500 ==> 5500 7000 8500 1000 11500 (5 to 1 point)
+* 100 < ac >= 500 ==> 5500 7000 8500 10000 11500 (5 to 1 point)
 minimum to pass is 6pts (not sure)
 
 
@@ -194,6 +194,12 @@ a[0 2 1] ; al[1 1 1]
 tmp[] en position tmp[0] = position plus petit a[]
 		en position tmp[1] = position deuxieme plus petit a[]
 
+a[-2 35 8] ; al[-1 -1 -1]
+a[-2 35 8] ; al[0 -1 -1]
+a[-2 35 8] ; al[0 -1 1]
+a[-2 35 8] ; al[0 2 1]
+a[i] = al[i];
+free(al)
 
 ### C'est bien mignon mais j'ai que deux stacks de dispo
 Le binaire est ton amis stack a == 1, stack b == 0

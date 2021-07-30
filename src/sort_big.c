@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 09:23:33 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/30 11:21:07 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/30 16:27:50 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,10 @@ void	big_sort(t_stack *a, t_stack *b)
 	int	bin;
 
 	max_bits = 0;
-	(void)b;
 	while ((a->biggest >> max_bits) != 0)
 		++max_bits;
-	//printf("let's play a game with bitwise operator\nmax bits = %d\n", max_bits);
-	//preprint(a);
 	for (int i = 0; i <= max_bits; i++)
 	{
-		//printf("bit %d\n", i);
 		for (size_t j = 0; j < a->max_s; j++)
 		{
 			bin = (a->arr[a->top_pos] >> i) & 1;
@@ -54,9 +50,7 @@ void	big_sort(t_stack *a, t_stack *b)
 			else
 				push(b, a);
 		}
-		//print_stacks(a, b);
 		while (b->current_s != 0)
 			push(a, b);
 	}
-	//print_stacks(a, b);
 }

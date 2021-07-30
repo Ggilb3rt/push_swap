@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:09 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/30 12:42:07 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/30 16:44:01 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	**split_av(int ac, char **av)
 	return (new_av);
 }
 
-void	smallest_pos_exception(t_stack *a, int *found)
+/*void	smallest_pos_exception(t_stack *a, int *found)
 {
 	size_t	i;
 
@@ -112,6 +112,68 @@ void	simplify_num(t_stack *a)
 		new_val++;
 	}
 	//print_stack(a);
+}*/
+
+t_bool	copy_stack(t_stack *base, t_stack *copy, char name)
+{
+	size_t	i;
+
+	i = 0;
+	if (!init_stack(copy, base->max_s + 1, name))
+		return (false);
+	while (i < base->max_s)
+	{
+		copy->arr[i] = base->arr[i];
+		copy->current_s++;
+		i++;
+	}
+	copy->top_pos = base->top_pos;
+	copy->smallest_pos = base->smallest_pos;
+	copy->smallest = base->smallest;
+	return (true);
+}
+
+void	bubble_sort(t_stack *copy)
+{
+	int		tmp;
+	size_t	i;
+
+	i = copy->top_pos;
+	while (i < copy->max_s)
+	{
+		find_smallest_pos(copy);
+		tmp = copy->arr[copy->top_pos];
+		copy->arr[copy->top_pos] = copy->arr[copy->smallest_pos];
+		copy->arr[copy->smallest_pos] = tmp;
+		copy->top_pos++;
+		i++;
+	}
+}
+
+void	insertionSort(t_stack *a)
+{
+	t_stack	copy;
+	int		i;
+	int		j;
+
+	copy_stack(a, &copy, 't');
+	bubble_sort(&copy);
+	i = 0;
+	while (i < (int)a->max_s)
+	{
+		j = 0;
+		while (j < (int)copy.max_s)
+		{
+			if (a->arr[i] == copy.arr[j])
+			{
+				a->arr[i] = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+	free(copy.arr);
 }
 
 int	main(int ac, char **av)
@@ -129,22 +191,21 @@ int	main(int ac, char **av)
 	if (!init_stack(&a, ac, 'a') || !init_stack(&b, ac, 'b'))
 		return (EXIT_FAILURE);
 	if (!init_arg(&a, av))
-		my_exit(&a, &b, EXIT_FAILURE);
+		my_exit(&a, &b, EXIT_SUCCESS);
 	if (is_short(&a))
 		my_exit(&a, &b, EXIT_SUCCESS);
 	find_biggest(&a);
 	find_smallest(&a);
 	find_smallest_pos(&a);
-	//print_stack_state(&a);
-	simplify_num(&a);
 	if (ac <= 4)
 		very_short_sort(&a);
 	else if (ac <= 7)
 		short_sort(&a, &b);
 	else
 	{
-		//big_sort(&a, &b);
+		insertionSort(&a);
+		big_sort(&a, &b);
 	}
-	print_stack_state(&a);
 	my_exit(&a, &b, EXIT_FAILURE);
+	return (0);
 }
