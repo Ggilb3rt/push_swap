@@ -191,9 +191,19 @@ a[0 35 8] ; al[1 0 0]
 a[0 35 1] ; al[1 0 1]
 a[0 2 1] ; al[1 1 1]
 
-
+tmp[] en position tmp[0] = position plus petit a[]
+		en position tmp[1] = position deuxieme plus petit a[]
 
 
 ### C'est bien mignon mais j'ai que deux stacks de dispo
-Le binaire est ton amis stack a == 0, stack b == 1
+Le binaire est ton amis stack a == 1, stack b == 0
 int => 4 bytes donc 32 bits donc 32 passages au maximum.
+Mais avec la reduction n appartient à [0;n) (pour le moment [0;n.max_val)...)
+Donc si n = 100, n_binary = 1100100 ==>		8 passages maximum
+Donc si n = 500, n_binary = 111110100 ==>	10 passages maximum
+
+## Les operateurs binaires
+>> (decalage vers la droite | right shift)
+<< (""			""	 gauche)
+&	(bit by bit AND)
+|	(bit by bit OR)

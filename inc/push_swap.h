@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:21 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/29 10:27:40 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/30 09:24:59 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	double_reverse_rotate(t_stack *a, t_stack *b);
 
 void	very_short_sort(t_stack *a);
 void	short_sort(t_stack *a, t_stack *b);
+void	big_sort(t_stack *a, t_stack *b);
 
 void	my_exit(t_stack *a, t_stack *b, int status);
 

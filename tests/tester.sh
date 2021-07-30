@@ -103,6 +103,30 @@ else
 	printf "$RED CHECKER : $RET $NC\n"
 fi
 
+for i in `seq 1 100`; do
+	NUM100+="`od -An -N4 -i < /dev/urandom`"
+done
+printf "\n${ORANGE}100 random num $NC\n"
+./push_swap $NUM100 | wc -l
+RET=`./push_swap $NUM100 | ./checker_Mac $NUM100`
+if [ $RET = "OK" ]; then
+	printf "$GREEN CHECKER : $RET $NC\n"
+else
+	printf "$RED CHECKER : $RET $NC\n"
+fi
+
+for i in `seq 1 500`; do
+	NUM500+="`od -An -N4 -i < /dev/urandom`"
+done
+printf "\n${ORANGE}500 random num $NC\n"
+./push_swap $NUM500 | wc -l
+RET=`./push_swap $NUM500 | ./checker_Mac $NUM500`
+if [ $RET = "OK" ]; then
+	printf "$GREEN CHECKER : $RET $NC\n"
+else
+	printf "$RED CHECKER : $RET $NC\n"
+fi
+
 : '
 printf "\n${PURP}double | 1 2 1 -43 |${NC}\n"
 ./push_swap 1 2 1 -43
