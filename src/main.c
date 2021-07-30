@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:09 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/30 11:21:54 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/07/30 12:42:07 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	simplify_num(t_stack *a)
 	while (already_found[0] == 0 || already_found[1] == 0
 		|| already_found[2] == 0)
 	{
-	//	printf("nez %d\ta[] = %d\n", new_val, a->arr[a->smallest_pos]);
+		//printf("nez %d\ta[] = %d\n", new_val, a->arr[a->smallest_pos]);
 		smallest_pos_exception(a, already_found);
 		a->arr[a->smallest_pos] = new_val;
 		already_found[a->smallest_pos] = 1;
@@ -136,15 +136,15 @@ int	main(int ac, char **av)
 	find_smallest(&a);
 	find_smallest_pos(&a);
 	//print_stack_state(&a);
+	simplify_num(&a);
 	if (ac <= 4)
 		very_short_sort(&a);
 	else if (ac <= 7)
 		short_sort(&a, &b);
 	else
 	{
-		simplify_num(&a);
-		big_sort(&a, &b);
+		//big_sort(&a, &b);
 	}
-	//print_stack_state(&a);
+	print_stack_state(&a);
 	my_exit(&a, &b, EXIT_FAILURE);
 }
