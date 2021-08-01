@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:21 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/30 09:24:59 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/08/01 15:14:43 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	double_rotate(t_stack *a, t_stack *b);
 void	reverse_rotate(t_stack *x, t_bool single);
 void	double_reverse_rotate(t_stack *a, t_stack *b);
 
+t_bool	stack_normalizer(t_stack *a);
 void	very_short_sort(t_stack *a);
 void	short_sort(t_stack *a, t_stack *b);
 void	big_sort(t_stack *a, t_stack *b);

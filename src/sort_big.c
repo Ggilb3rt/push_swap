@@ -6,12 +6,13 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 09:23:33 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/30 16:27:50 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/08/01 14:29:49 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
 void	showbits(int x )
 {
 	int	i;
@@ -30,27 +31,33 @@ void preprint(t_stack *a)
 	{
 		showbits(a->arr[i]);
 	}
-}
+}*/
 
 void	big_sort(t_stack *a, t_stack *b)
 {
-	int	max_bits;
-	int	bin;
+	int		max_bits;
+	int		bin;
+	int		i;
+	size_t	j;
 
 	max_bits = 0;
 	while ((a->biggest >> max_bits) != 0)
 		++max_bits;
-	for (int i = 0; i <= max_bits; i++)
+	i = 0;
+	while (i <= max_bits)
 	{
-		for (size_t j = 0; j < a->max_s; j++)
+		j = 0;
+		while (j < a->max_s)
 		{
 			bin = (a->arr[a->top_pos] >> i) & 1;
 			if (bin == 1)
 				rotate(a, true);
 			else
 				push(b, a);
+			j++;
 		}
 		while (b->current_s != 0)
 			push(a, b);
+		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 10:23:27 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/07/29 11:17:10 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/08/01 14:55:09 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,18 @@ t_bool	init_arg(t_stack *a, char **av)
 {
 	if (!put_to_a(a->max_s, av, a->arr))
 	{
-		write(2, "Error\n", 6);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
 		return (false);
 	}
 	if (find_double(a->max_s, a->arr))
 	{
-		write(2, "Error\n", 6);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
 		return (false);
 	}
 	a->current_s = a->max_s;
 	a->top_pos = 0;
+	find_biggest(a);
+	find_smallest(a);
+	find_smallest_pos(a);
 	return (true);
 }

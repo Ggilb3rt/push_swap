@@ -162,7 +162,7 @@ a[78 -8 1 58 -10] == magic human sort ==> [-10 -8 1 58 78]
 a[4   1 2  3   0]
 
 Ce qui est chiant c'est de devoir deja trier avant de trier...
-ou alors
+ou alors (pas utilisé en fait, finalement je fais un petit tri)
 ```
 x = 0;
 while (!(all be change))
@@ -204,7 +204,7 @@ free(al)
 ### C'est bien mignon mais j'ai que deux stacks de dispo
 Le binaire est ton amis stack a == 1, stack b == 0
 int => 4 bytes donc 32 bits donc 32 passages au maximum.
-Mais avec la reduction n appartient à [0;n) (pour le moment [0;n.max_val)...)
+Mais avec la reduction n appartient à [0;n-1)
 Donc si n = 100, n_binary = 1100100 ==>		8 passages maximum
 Donc si n = 500, n_binary = 111110100 ==>	10 passages maximum
 
@@ -213,3 +213,18 @@ Donc si n = 500, n_binary = 111110100 ==>	10 passages maximum
 << (""			""	 gauche)
 &	(bit by bit AND)
 |	(bit by bit OR)
+
+Utiliser les operateurs pour ranger les nombres dans les bonnes boites :
+1. On regarde les bits un par un en utilisant nombre >> x nous donne le bit de nombre à la position x
+1. Pour savoir si c'est un 1 ou un 0 on le comapre avec 1 ; s'il retourne 0 c'est un 0 sinon c'est un 1
+
+(nombre >> x) & 1 == 1 ? 1 : 0
+
+5				==> 101
+5 >> 2			==>   1(01)
+(5 >> 2) & 1	==> 1 & 1 = 1
+**go dans la boite 1**
+
+5 >> 1			==>  10(1)
+(5 >> 1) & 1	==> 0 & 1 = 0
+**go dans la boite 0**
