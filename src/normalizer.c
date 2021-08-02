@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 14:31:48 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/08/01 15:15:15 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/08/02 10:58:05 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	bubble_sort(t_stack *copy)
 		copy->top_pos++;
 		i++;
 	}
+	find_smallest_pos(copy);
+	find_smallest(copy);
 }
 
 t_bool	stack_normalizer(t_stack *a)

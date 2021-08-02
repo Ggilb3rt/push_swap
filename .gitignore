@@ -138,4 +138,7 @@ tags
 
 # End of https://www.toptal.com/developers/gitignore/api/c,macos,vim,visualstudiocode,linux
 push_swap
-tests/push_swap_tester
+tests/*
+checker_Mac
+checker_linux
+atchmin*

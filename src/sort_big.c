@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 09:23:33 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/08/01 14:29:49 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/08/02 10:59:33 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void preprint(t_stack *a)
 void	big_sort(t_stack *a, t_stack *b)
 {
 	int		max_bits;
-	int		bin;
 	int		i;
 	size_t	j;
 
+	find_biggest(a);
 	max_bits = 0;
 	while ((a->biggest >> max_bits) != 0)
 		++max_bits;
@@ -49,8 +49,7 @@ void	big_sort(t_stack *a, t_stack *b)
 		j = 0;
 		while (j < a->max_s)
 		{
-			bin = (a->arr[a->top_pos] >> i) & 1;
-			if (bin == 1)
+			if (((a->arr[a->top_pos] >> i) & 1) == 1)
 				rotate(a, true);
 			else
 				push(b, a);

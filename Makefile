@@ -13,8 +13,7 @@ INCFLAGS = -I$I
 
 RM = rm -f
 
-.PHONY: all clean fclean re
-
+.PHONY: all clean fclean re fcleanlibft fcleanall reall test
 
 # MAKERS
 all: $(NAME)
@@ -33,7 +32,6 @@ $(NAME): $(OBJ)
 	@printf "Compilation ...\n"
 	@$(CC) $^ -L./lib/libft -lft -o $@
 	@printf "Have fun :-)\n"
-	#./tests/tester.sh
 
 # CLEANERS
 clean:
