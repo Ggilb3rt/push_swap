@@ -24,6 +24,7 @@ declare -a ERROR_NUM=(
 	'-7Lb98'
 	'1 2 2147483649'
 	'1 2 -2147483649'
+	'1 2 --7'
 )
 for i in "${ERROR_NUM[@]}"; do
 	printf "\n${PURP}./push_swap $i${NC}\n"
@@ -65,7 +66,7 @@ done
 
 ## RANDOM NUMBERS TESTS
 printf "\n\n${ORANGE}------------------------------------------------------\n"
-printf "Now some tests with random numbers from /dev/urandom${NC}\n"
+printf "Now some tests with random numbers${NC}\n"
 
 for i in `seq 0 2`; do
 	NUM+="`od -An -N4 -i < /dev/urandom`"
@@ -91,33 +92,7 @@ else
 	printf "$RED CHECKER : $RET $NC\n"
 fi
 
-for i in `seq 1 6`; do
-	NUM6+="`od -An -N4 -i < /dev/urandom`"
-done
-printf "\n${ORANGE}6 random num $NC\n"
-./push_swap $NUM6 | wc -l
-RET=`./push_swap $NUM6 | ./checker_Mac $NUM6`
-if [ $RET = "OK" ]; then
-	printf "$GREEN CHECKER : $RET $NC\n"
-else
-	printf "$RED CHECKER : $RET $NC\n"
-fi
-
-for i in `seq 1 50`; do
-	NUM50+="`od -An -N4 -i < /dev/urandom`"
-done
-printf "\n${ORANGE}50 random num $NC\n"
-./push_swap $NUM50 | wc -l
-RET=`./push_swap $NUM50 | ./checker_Mac $NUM50`
-if [ $RET = "OK" ]; then
-	printf "$GREEN CHECKER : $RET $NC\n"
-else
-	printf "$RED CHECKER : $RET $NC\n"
-fi
-
-for i in `seq 1 100`; do
-	NUM100+="`od -An -N4 -i < /dev/urandom`"
-done
+NUM100=`ruby -e "puts (0..99).to_a.shuffle.join(' ')"`;
 printf "\n${ORANGE}100 random num $NC\n"
 ./push_swap $NUM100 | wc -l
 RET=`./push_swap $NUM100 | ./checker_Mac $NUM100`
@@ -127,9 +102,7 @@ else
 	printf "$RED CHECKER : $RET $NC\n"
 fi
 
-for i in `seq 1 500`; do
-	NUM500+="`od -An -N4 -i < /dev/urandom`"
-done
+NUM500=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`;
 printf "\n${ORANGE}500 random num $NC\n"
 ./push_swap $NUM500 | wc -l
 RET=`./push_swap $NUM500 | ./checker_Mac $NUM500`
@@ -139,57 +112,40 @@ else
 	printf "$RED CHECKER : $RET $NC\n"
 fi
 
-: '
-printf "\n${PURP}double | 1 2 1 -43 |${NC}\n"
-./push_swap 1 2 1 -43
 
-printf "\n${PURP}triple | 1 2 2 3 2 |${NC}\n"
-./push_swap 1 2 2 3 2
+## RANDOM NUMBERS TESTS
+printf "\n\n${ORANGE}------------------------------------------------------\n"
+printf "Now some tests with other quantity${NC}\n"
 
-printf "\n${PURP}Not only number | 1 7 98 nn |${NC}\n"
-./push_swap 1 7 98 nn
+NUM6=`ruby -e "puts (0..5).to_a.shuffle.join(' ')"`;
+printf "\n${ORANGE}6 random num $NC\n"
+./push_swap $NUM6 | wc -l
+RET=`./push_swap $NUM6 | ./checker_Mac $NUM6`
+if [ $RET = "OK" ]; then
+	printf "$GREEN CHECKER : $RET $NC\n"
+else
+	printf "$RED CHECKER : $RET $NC\n"
+fi
 
-printf "\n${PURP}Strange with minus | -4-8-7 |${NC}\n"
-./push_swap -4-8-7
+NUM50=`ruby -e "puts (0..69).to_a.shuffle.join(' ')"`;
+printf "\n${ORANGE}69 random num $NC\n"
+./push_swap $NUM50 | wc -l
+RET=`./push_swap $NUM50 | ./checker_Mac $NUM50`
+if [ $RET = "OK" ]; then
+	printf "$GREEN CHECKER : $RET $NC\n"
+else
+	printf "$RED CHECKER : $RET $NC\n"
+fi
 
-printf "\n${PURP}Letter in number | -7Lb98 |${NC}\n"
-./push_swap -7Lb98
-
-printf "\n${PURP}Bigger than int | 1 2 2147483649 |${NC}\n"
-./push_swap 1 2 2147483649
-
-printf "\n${PURP}Lower than int | 1 2 -2147483649 |${NC}\n"
-./push_swap 1 2 2147483649
-
-printf "\n${ORANGE}already short | -14 1 2 3 4 5 6 7 41 87 |${NC}\n"
-./push_swap -14 1 2 3 4 5 6 7 41 87
-
-printf "\n${ORANGE}only one | 1 |${NC}\n"
-./push_swap 1
-./push_swap 1 | ./checker_Mac 1
-
-LIST="455 -7"
-printf "\n${ORANGE}very very short | $LIST |${NC}\n"
-./push_swap $LIST
-RET=`./push_swap $LIST | ./checker_Mac $LIST`
-printf "CHECKER MAC : $RET\n"
-
-printf "\n${ORANGE}very short | 455 1 -7 |${NC}\n"
-./push_swap 455 1 -7
-
-printf "\n${ORANGE}normal | 1 7 +81 -4 |${NC}\n"
-./push_swap 1 7 81 -4
-
-printf "\n${ORANGE}0 inside | 1 2 0 3 |${NC}\n"
-./push_swap 1 2 0 3
-
-printf "\n${ORANGE}from subject | 2 1 3 6 5 8 |${NC}\n"
-./push_swap 2 1 3 6 5 8
-
-printf "\n${LBLUE}with \"\" | \"2 1 3 6 5 8\" |${NC}\n"
-./push_swap "2 1 3 6 5 8"
-'
-
+NUM237=`ruby -e "puts (0..237).to_a.shuffle.join(' ')"`;
+printf "\n${ORANGE}237 random num $NC\n"
+./push_swap $NUM237 | wc -l
+RET=`./push_swap $NUM237 | ./checker_Mac $NUM237`
+if [ $RET = "OK" ]; then
+	printf "$GREEN CHECKER : $RET $NC\n"
+else
+	printf "$RED CHECKER : $RET $NC\n"
+fi
 
 #declare -A arr=([pou]="'pouet'" [cho]="cacao")
 #declare -p arr
