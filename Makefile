@@ -8,7 +8,7 @@ OBJ = $(SRC:$S%.c=$O%.o)
 
 CC = gcc
 #REMEMBER TO REMOVE -g
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 INCFLAGS = -I$I
 
 RM = rm -f
