@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 10:23:27 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/08/01 14:55:09 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/08/04 12:40:36 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_bool	arg_overflow(int num, char *av)
 	comp = ft_itoa(num);
 	if (av[0] == '+')
 		av++;
-	if (strcmp(comp, av))
+	if (ft_strncmp(comp, av, ft_strlen(comp)))
 	{
 		if (comp)
 			free(comp);

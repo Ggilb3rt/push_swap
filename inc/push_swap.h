@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 14:52:21 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/08/01 15:14:43 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/08/04 12:41:04 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include "../lib/libft/libft.h"
 
 // A retirer
-# include <string.h>
-# include <stdio.h>
+//# include <string.h>
+//# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -34,11 +34,9 @@ typedef struct s_stack
 	char			stack_name;
 }				t_stack;
 
-void	print_stack(t_stack *a);
-void	print_stacks(t_stack *a, t_stack *b);
-void	print_stack_state(t_stack *a);
-
-//void	push_a(t_stack *a, t_stack *b);
+//void	print_stack(t_stack *a);
+//void	print_stacks(t_stack *a, t_stack *b);
+//void	print_stack_state(t_stack *a);
 
 t_bool	init_stack(t_stack *x, int max_size, char stack_name);
 t_bool	init_arg(t_stack *a, char **av);

@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 09:23:33 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/08/02 10:59:33 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/08/04 12:31:32 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	big_sort(t_stack *a, t_stack *b)
 	while ((a->biggest >> max_bits) != 0)
 		++max_bits;
 	i = 0;
-	while (i <= max_bits)
+	while (i < max_bits)
 	{
 		j = 0;
 		while (j < a->max_s)
