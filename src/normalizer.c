@@ -6,7 +6,7 @@
 /*   By: ggilbert <ggilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 14:31:48 by ggilbert          #+#    #+#             */
-/*   Updated: 2021/08/02 10:58:05 by ggilbert         ###   ########.fr       */
+/*   Updated: 2021/08/06 10:01:41 by ggilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	bubble_sort(t_stack *copy)
 	size_t	i;
 
 	i = copy->top_pos;
-	while (i < copy->max_s)
+	while (i < copy->max_s - 1)
 	{
 		find_smallest_pos(copy);
 		tmp = copy->arr[copy->top_pos];
